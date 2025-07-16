@@ -1,4 +1,4 @@
-// import 'package:fbreplica/Pages/FbHomePage.dart';
+import 'package:fbreplica/Pages/FbHomePage.dart';
 // import 'package:fbreplica/Pages/PostPanel.dart';
 
 import 'package:fbreplica/Pages/LoginPage.dart';
@@ -20,8 +20,8 @@ class FacebookReplica extends StatelessWidget {
         // primarySwatch: Colors.blue,
         // visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
-      // home: FBHomePage(),
+      // home: LoginPage(),
+      home: FBHomePage(),
       // home: SocialMediaPost(),
     );
   }

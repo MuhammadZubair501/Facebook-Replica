@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
   Widget CreateStoryPanel() {
     return Container(
-      height: 300, // Card height
+      height: 230, // Card height
       padding: EdgeInsets.symmetric(vertical: 10),
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -118,8 +118,8 @@ class CreateStoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 130,
-      height:300,
+      width: 110,
+      height:220,
       margin: EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -136,7 +136,7 @@ class CreateStoryCard extends StatelessWidget {
                 child: Image.asset(
                   'Assets/Images/profilepic.jpg',
                   width: 130,
-                  height: 180,
+                  height: 150,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -164,7 +164,7 @@ class CreateStoryCard extends StatelessWidget {
           ),
          
           Container(
-            height: 90,
+            height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
               // color: Colors.grey[300],
@@ -189,7 +189,7 @@ class CreateStoryCard extends StatelessWidget {
   Widget StoryCard(image,avatar,name) {
     return Container(
       width: 110,
-      height: 300,
+      height: 230,
       margin: EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),

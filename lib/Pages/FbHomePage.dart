@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fbreplica/Pages/IconsStack.dart';
 
+
 List<Post> posts = [
   Post(
     NetworkImage(
@@ -31,44 +32,61 @@ class FBHomePage extends StatefulWidget {
 class _FBHomePageState extends State<FBHomePage> {
   int _selectedIndex = 0;
 
-  void addNewPost(Post post) {
+  // void addNewPost(Post post) {
+  //   setState(() {
+  //     posts.add(post);
+  //   });
+  
+  // }
+void RemovePost(index) {
     setState(() {
-      posts.add(post);
+      posts.removeAt(index);
     });
+  
   }
-
   List<Widget> _pages() {
-    return [
-      Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 10),
-              PostPanel(context),
-              const SizedBox(height: 10),
-              Container(color: Color.fromARGB(255, 212, 212, 212), height: 3),
-              CreateStoryPanel(),
-              const SizedBox(height: 10),
-              Container(color: Color.fromARGB(255, 212, 212, 212), height: 3),
-              ...posts.map((post) {
-                return PostPanelToAdd(
-                  post.profileImage,
-                  post.name,
-                  post.content,
-                  post.postImage,
-                );
-              }).toList(),
-            ],
-          ),
-        ),
-      ),
-      const Center(child: Text("Groups Page")),
-      const Center(child: Text("Videos Page")),
-      const Center(child: Text("Marketplace Page")),
-      const Center(child: Text("Notifications Page")),
-      const Center(child: Text("Menu Page")),
-    ];
-  }
+  return [
+   ListView.builder(
+  itemCount: posts.length + 4,
+  itemBuilder: (BuildContext context, int index) {
+    if (index == 0) {
+      return const SizedBox(height: 10);
+    } else if (index == 1) {
+      return PostPanel(context);
+    } else if (index == 2) {
+      return Column(
+        children: [
+          const SizedBox(height: 10),
+          Container(color: Color.fromARGB(255, 212, 212, 212), height: 3),
+          CreateStoryPanel(),
+          const SizedBox(height: 10),
+          Container(color: Color.fromARGB(255, 212, 212, 212), height: 3),
+        ],
+      );
+    } else if (index >= 4) {
+      final post = posts[index - 4];
+      return PostPanelToAdd(context,
+        post.profileImage,
+        post.name,
+        post.content,
+        post.postImage,
+        index-4
+        
+      );
+    } else {
+      return const SizedBox.shrink(); // for index == 3 (safe fallback)
+    }
+  },
+),
+
+    const Center(child: Text("Groups Page")),
+    const Center(child: Text("Videos Page")),
+    const Center(child: Text("Marketplace Page")),
+    const Center(child: Text("Notifications Page")),
+    const Center(child: Text("Menu Page")),
+  ];
+}
+
 
   void _onTabSelected(int index) {
     setState(() {
